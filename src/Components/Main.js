@@ -3,6 +3,7 @@ import PhotoWall from './PhotoWall'
 import AddPhoto from './AddPhoto'
 import {Route, Link} from 'react-router-dom'
 import Single from './Single'
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 class Main extends Component {
 
@@ -16,26 +17,26 @@ class Main extends Component {
     render() {
 
         return (
-        <div>
-            <h1>
-                <Link to="/"> Asana Dog </Link>
-            </h1>
-            <Route exact path="/" render={() => (
-                <div>
-                    <PhotoWall {...this.props} />
-                </div>
-            )}/>
-
-            <Route path="/AddPhoto" render = {({history}) => (
-                <AddPhoto {...this.props} onHistory={history}/>
-            )}/>
-            
-            <Route exact path="/single/:id" render = {(params) => (
-                <Single loading={this.state.loading} {...this.props} {...params}/> 
-            )}/>
-            
-            
-        </div>
+        <Grid fluid>
+             <Row className="show-grid">
+                <Col xs={12}>
+                    <h1>
+                        <Link to="/"> Asana Dog </Link>
+                    </h1>
+                    <Route exact path="/" render={() => (
+                        <div>
+                            <PhotoWall {...this.props} />
+                        </div>
+                    )}/>
+                    <Route path="/AddPhoto" render = {({history}) => (
+                                <AddPhoto {...this.props} onHistory={history}/>
+                            )}/>
+                    <Route exact path="/single/:id" render = {(params) => (
+                        <Single loading={this.state.loading} {...this.props} {...params}/> 
+                    )}/>
+                </Col>
+            </Row>
+        </Grid>
         )
     }
 }

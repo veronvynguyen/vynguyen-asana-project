@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
-import doggie from '../images/doggie.jpg';
- 
+import AdoptMe from '../images/AdoptMe.png';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Picture } from 'react-responsive-picture';
+
 class AddPhoto extends Component {
   state = {
     description: "",
@@ -17,14 +19,16 @@ class AddPhoto extends Component {
   };
  
   handlePostChange = (event, field) =>
-     { switch(field) {
-      case 'name':
-        this.setState({name: event.target.elements.name.value})
-        console.log("Name: " + this.state.name)
-      case 'age':
-        this.setState({name: event.target.elements.age.value})
-      default:
-        return null;
+     { 
+       console.log(field)
+      switch(field) {
+        case 'name':
+          this.setState({name: event.target.elements.name.value})
+          console.log("Name: " + this.state.name)
+        case 'age':
+          this.setState({name: event.target.elements.age.value})
+        default:
+          return null;
     }
   }
     // this.setState({ 
@@ -58,104 +62,45 @@ class AddPhoto extends Component {
         this.props.startAddingPost(post);
     })
   };
- 
+
   render() {
     return (
-      <div className="form">
-        <img src={doggie} alt="Happy dog" width="50%"/>
-        <form>   
-          <input type="text" name="name" placeholder="name" onChange={this.handlePostChange("name")}/>
-          <input type="text" name="age" placeholder="age"/>
-          <input type="text" name="weight" placeholder="weight"/>
-          <input type="text" name="gender" placeholder="gender"/>
-          <input type="text" name="breed" placeholder="breed"/>
-          <label>Image:</label>
-          {this.state.isUploading && <p>Progress: {this.state.progress}</p>}
-          {this.state.imageLink && <img src={this.state.imageLink} />}
-          <FileUploader
-            accept="image/*"
-            name="avatar"
-            randomizeFilename
-            storageRef={firebase.storage().ref("images")}
-            onUploadStart={this.handleUploadStart}
-            onUploadError={this.handleUploadError}
-            onUploadSuccess={this.handleUploadSuccess}
-            onProgress={this.handleProgress}
-          />
-          <button> Post </button>
-        </form>
-      </div>
+      <Grid fluid>
+        <Row between="xs">
+          <Col xs={6} md={4}>
+           <Picture src={AdoptMe} sizes="(max-width: 90%)" className="dogImage"/>  
+          </Col>
+          <Col xs={6} md={8}>
+            <div className="form">
+              <form>  
+                <label>Upload an image</label> 
+                <FileUploader
+                    accept="image/*"
+                    name="avatar"
+                    randomizeFilename
+                    storageRef={firebase.storage().ref("images")}
+                    onUploadStart={this.handleUploadStart}
+                    onUploadError={this.handleUploadError}
+                    onUploadSuccess={this.handleUploadSuccess}
+                    onProgress={this.handleProgress}
+                />
+
+                <input type="text" name="name" placeholder="name" onChange={this.handlePostChange("name")}/>
+                <input type="text" name="age" placeholder="age"/>
+                <input type="text" name="weight" placeholder="weight"/>
+                <input type="text" name="gender" placeholder="gender"/>
+                <input type="text" name="breed" placeholder="breed"/>
+                
+                {this.state.isUploading && <p>Progress: {this.state.progress}%</p>}
+                {this.state.imageLink && <Picture src={this.state.imageLink} className="uploadImg"/>}
+                <button>Add Dog</button>
+              </form>
+            </div>
+          </Col> 
+        </Row>
+      </Grid>
     );
   }
 }
-
-// class AddPhoto extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       image: null,
-//       url: '',
-//       progress: 0
-//     }
-//     this.handleChange = this
-//       .handleChange
-//       .bind(this);
-//     this.handleUpload = this.handleUpload.bind(this);
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-//   handleChange = e => {
-//     if (e.target.files[0]) {
-//       const image = e.target.files[0];
-//       this.setState(() => ({image}));
-//     }
-//   }
-//   handleUpload = () => {
-//       const {image} = this.state;
-//       const uploadTask = storage.ref(`images/${image.name}`).put(image);
-//       uploadTask.on('state_changed', 
-//       (snapshot) => {
-//         // progrss function ....
-//         const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-//         this.setState({progress});
-//       }, 
-//       (error) => {
-//            // error function ....
-//         console.log(error);
-//       }, 
-//     () => {
-//         // complete function ....
-//         storage.ref('images').child(image.name).getDownloadURL().then(url => {
-//             this.setState({url});
-//             const post = {
-//               id: Math.random(),
-//               description: description,
-//               imageLink: imageLink
-//             }
-//             this.props.startAddingPost(post);
-//         })
-//     });
-//   }
-//   render() {
-//     const style = {
-//       height: '100vh',
-//       display: 'flex',
-//       flexDirection: 'column',
-//       alignItems: 'center',
-//       justifyContent: 'center'
-//     };
-//     return (
-//       <div style={style}>
-//         <form onSubmit={this.handleUpload}>
-//           <progress value={this.state.progress} max="100"/>
-//           <input type="file" onChange={this.handleChange}/>
-
-//           <input type ="text" placeholder="Link" name="link" value={this.state.url}/>
-//           <input type ="text" placeholder="Description" name="description"/>
-//         </form>
-//         <br/>
-//       </div>
-//     )
-//   }
-// }
 
 export default AddPhoto;

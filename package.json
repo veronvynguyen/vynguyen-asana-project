@@ -6,8 +6,10 @@
     "firebase": "^4.8.2",
     "prop-types": "^15.5.7",
     "react": "^16.6.3",
+    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",
     "react-firebase-file-uploader": "^2.4.2",
+    "react-flexbox-grid": "^2.1.2",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "2.1.1",
@@ -28,5 +30,11 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "css-loader": "^2.0.2",
+    "react-image-responsive": "^2.0.2",
+    "react-responsive-picture": "^3.1.0",
+    "style-loader": "^0.23.1"
+  }
 }
