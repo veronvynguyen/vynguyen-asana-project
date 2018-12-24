@@ -17,30 +17,11 @@ class AddPhoto extends Component {
     progress: 0,
     imageLink: ""
   };
- 
-  handlePostChange = (event, field) =>
-     { 
-       console.log(field)
-      switch(field) {
-        case 'name':
-          this.setState({name: event.target.elements.name.value})
-          console.log("Name: " + this.state.name)
-        case 'age':
-          this.setState({name: event.target.elements.age.value})
-        default:
-          return null;
-    }
-  }
-    // this.setState({ 
-    //   {field}:
-    //   // description: event.target.elements.description.value,
-    //   name: event.target.elements.name.value,
-    //   age: event.target.elements.age.value,
-    //   weight: event.target.elements.weight.value,
-    //   gender: event.target.elements.gender.value,
-    //   breed: event.target.elements.breed.value,
-    //   personality: event.target.elements.personality.value 
-    // });
+    
+  handlePostChange = event => 
+    this.setState({
+        [event.target.name]: event.target.type === 'number' ? parseInt(event.target.value) : event.target.value,
+    });
 
   handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
   handleProgress = progress => this.setState({ progress });
@@ -57,6 +38,10 @@ class AddPhoto extends Component {
           id: Number(new Date()),
           description: this.state.description,
           name: this.state.name,
+          age: this.state.age,
+          weight: this.state.weight,
+          gender: this.state.gender,
+          breed: this.state.breed,
           imageLink: url
         }
         this.props.startAddingPost(post);
@@ -72,7 +57,7 @@ class AddPhoto extends Component {
           </Col>
           <Col xs={6} md={8}>
             <div className="form">
-              <form>  
+              <form>
                 <label>Upload an image</label> 
                 <FileUploader
                     accept="image/*"
@@ -85,11 +70,12 @@ class AddPhoto extends Component {
                     onProgress={this.handleProgress}
                 />
 
-                <input type="text" name="name" placeholder="name" onChange={this.handlePostChange("name")}/>
-                <input type="text" name="age" placeholder="age"/>
-                <input type="text" name="weight" placeholder="weight"/>
-                <input type="text" name="gender" placeholder="gender"/>
-                <input type="text" name="breed" placeholder="breed"/>
+                <input type="text" name="name" placeholder="name" onChange={this.handlePostChange}/>
+                <input type="text" name="age" placeholder="age" onChange={this.handlePostChange}/>
+                <input type="text" name="weight" placeholder="weight" onChange={this.handlePostChange}/>
+                <input type="text" name="gender" placeholder="gender" onChange={this.handlePostChange}/>
+                <input type="text" name="breed" placeholder="breed" onChange={this.handlePostChange}/>
+                <input type="text" name="description" placeholder="description" onChange={this.handlePostChange}/>
                 
                 {this.state.isUploading && <p>Progress: {this.state.progress}%</p>}
                 {this.state.imageLink && <Picture src={this.state.imageLink} className="uploadImg"/>}
