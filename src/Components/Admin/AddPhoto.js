@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
-import DogArt from '../images/DogArt.png';
+// import Illustration from '../images/Illustration.png';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Picture } from 'react-responsive-picture';
 
@@ -34,20 +34,21 @@ class AddPhoto extends Component {
     
     firebase.storage().ref('images').child(filename).getDownloadURL().then(url => {
         this.setState({imageLink: url});
+        const post = {
+          id: Number(new Date()),
+          description: this.state.description,
+           name: this.state.name,
+          // age: this.state.age,
+          // weight: this.state.weight,
+          // gender: this.state.gender,
+          // breed: this.state.breed,
+          imageLink: url
+        }
+        
+        this.props.startAddingPost(post);
     })
 
-    const post = {
-      id: Number(new Date()),
-      description: this.state.description,
-       name: this.state.name,
-      // age: this.state.age,
-      // weight: this.state.weight,
-      // gender: this.state.gender,
-      // breed: this.state.breed,
-      imageLink: this.state.imageLink
-    }
     
-    this.props.startAddingPost(post);
   };
 
   render() {
@@ -55,7 +56,7 @@ class AddPhoto extends Component {
       <Grid fluid>
         <Row between="xs">
           <Col xs={6} md={4}>
-           <Picture src={DogArt} sizes="(max-width: 90%)"/>  
+           {/* <Picture src={Illustration} sizes="(max-width: 90%)"/>   */}
           </Col>
           <Col xs={6} md={8}>
             <div className="form">

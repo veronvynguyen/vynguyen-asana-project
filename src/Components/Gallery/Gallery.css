@@ -8,7 +8,14 @@
     }
 }
 
+img {
+    --orig-width: 100%;
+}
+
 body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
     margin: 0;
     font-family: 'Quicksand', sans-serif;
     background: #ff9966; /* fallback for old browsers */
@@ -16,15 +23,61 @@ body {
     background: linear-gradient(to right, #ff5e62, #ff9966); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.gallery {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 1rem;
+}
+
+.responsive-image {
+    max-width: var(--orig-width)
+}
+/* 
+@media screen and (min-width: 600px) {
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+    .gallery {
+      width: 50%;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .gallery {
+      width: calc(100% / 3);
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    .gallery {
+      width: calc(50% - 2rem);
+    }
+  }
+   */
+  /* @media screen and (min-width: 1000px) {
+    .gallery {
+      width: calc(33.3333% - 2rem);
+    }
+  } */
+
+  .cell {
+      object-fit: cover;
+  }
+
 .gallery img {
+    width: var(--orig-width);
+    height: 40vh;
+    object-fit: cover;
+    position: relative;
+    display: block;
+    background-color: white;
     border-radius: 3px;
     overflow: hidden;
-    margin: 38px 8px;
     background-repeat: no-repeat;
     -webkit-transition: all 0.3s cubic-bezier(0.15, 1, 0.33, 1) 0s;
-    -o-transition: all 0.3s cubic-bezier(0.15, 1, 0.33, 1) 0s;
     transition: all 0.3s cubic-bezier(0.15, 1, 0.33, 1) 0s;
-    -webkit-box-shadow: rgba(23, 43, 77, 0.2) 0px 1px 1px, rgba(23, 43, 77, 0.25) 0px 0px 0.5px 0px;
     box-shadow: rgba(91, 94, 99, 0.2) 0px 1px 1px, rgba(108, 114, 125, 0.25) 0px 0px 0.5px 0px;
 }
 
@@ -32,16 +85,36 @@ body {
     transform: translateY(-3px);
 }
 
-.intro {
-    color: white;
+.site-header {
     text-align: center;
+    color: white;
 }
 
-.intro h2 {
-    margin: 0;
+.site-header h2 {
+    margin-top: 4rem;
     font-size: 56px;
-    font-weight: normal;
-    letter-spacing: 0em;
+    letter-spacing: -4px;
+}
+
+.site-header p {
+    font-size: 20px;
+    max-width: 550px;
+    margin: 0 auto;
+    letter-spacing: -.5px;
+}
+
+.site-header blockquote {
+    border-left: none
+}
+
+.site-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: .5rem;
+    width: 100%;
+    text-align: center;
+    color: white;
 }
 
 @media (min-width: 1024px) {

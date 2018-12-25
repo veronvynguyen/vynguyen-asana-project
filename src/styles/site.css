@@ -1,6 +1,9 @@
+:root {
+    --main-font: 'Quicksand', sans-serif;
+}
+
 html {
 	font-size: 10px;
-    font-family: 'Quicksand', sans-serif;
 }
 
 p {
@@ -9,7 +12,7 @@ p {
 }
 
 h1 {
-    font-family: 'Quicksand', sans-serif;
+    font-family: var(--main-font);
     text-align: center;
     font-weight: 100;
     font-size: 13rem;
@@ -30,10 +33,6 @@ h1 a:focus {
 
 h1 a:hover {
 	text-decoration: none;
-}
-
-body {
-	background: #f9f6f2;
 }
 
 .photoGrid {
