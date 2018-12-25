@@ -1,0 +1,63 @@
+@media (max-width: 768px) {
+    body {
+        background-repeat: no-repeat;
+    }
+
+    .intro {
+        padding-top: 50px;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: #ff9966; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ff5e62, #ff9966); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ff5e62, #ff9966); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.gallery img {
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 38px 8px;
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.3s cubic-bezier(0.15, 1, 0.33, 1) 0s;
+    -o-transition: all 0.3s cubic-bezier(0.15, 1, 0.33, 1) 0s;
+    transition: all 0.3s cubic-bezier(0.15, 1, 0.33, 1) 0s;
+    -webkit-box-shadow: rgba(23, 43, 77, 0.2) 0px 1px 1px, rgba(23, 43, 77, 0.25) 0px 0px 0.5px 0px;
+    box-shadow: rgba(91, 94, 99, 0.2) 0px 1px 1px, rgba(108, 114, 125, 0.25) 0px 0px 0.5px 0px;
+}
+
+.gallery img:hover {
+    transform: translateY(-3px);
+}
+
+.intro {
+    color: white;
+    text-align: center;
+}
+
+.intro h2 {
+    margin: 0;
+    font-size: 56px;
+    font-weight: normal;
+    letter-spacing: 0em;
+}
+
+@media (min-width: 1024px) {
+    .intro p {
+        max-width: 23em;
+        font-family: 'Quicksand', sans-serif;
+        line-height: 1.25em;
+    }
+}
+
+.intro p {
+    display: inline-block;
+    max-width: 30em;
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 0em;
+    line-height: 1.6em;
+    margin: 0 auto;
+}

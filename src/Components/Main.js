@@ -21,13 +21,9 @@ class Main extends Component {
         const { openModal } = this.state;
         return (
         <Grid fluid>
-        <Header/>
+            <Header/>
              <Row className="show-grid">
                 <Col xs={12}>
-                    {/* <h1>
-                        <Link to="/"> Asana Dog </Link>
-                    </h1> */}
-                    
                     <Route exact path="/" render={() => (
                         <div>
                             <PhotoWall {...this.props} />
