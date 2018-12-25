@@ -8,6 +8,7 @@ import { Picture } from 'react-responsive-picture';
 class AddPhoto extends Component {
   state = {
     description: "",
+    address: "",
     name: "",
     // age: "",
     // weight: "",
@@ -38,6 +39,9 @@ class AddPhoto extends Component {
           id: Number(new Date()),
           description: this.state.description,
            name: this.state.name,
+           address: this.state.address,
+           phone: this.state.phone,
+           email: this.state.email,
           // age: this.state.age,
           // weight: this.state.weight,
           // gender: this.state.gender,
@@ -79,7 +83,7 @@ class AddPhoto extends Component {
                 <input type="text" name="gender" placeholder="gender" onChange={this.handlePostChange}/>
                 <input type="text" name="breed" placeholder="breed" onChange={this.handlePostChange}/> */}
                 <input type="text" value={this.state.description} name="description" placeholder="Background (ex. dog's gender, weight, breed, age)." onChange={this.handlePostChange}/>
-                
+                <input type="text" name="address" placeholder="Shelter Address" onChange={this.handlePostChange}/>
                 {this.state.isUploading && <p>Progress: {this.state.progress}%</p>}
                 {this.state.imageLink && <Picture src={this.state.imageLink} className="uploadImg"/>}
                 <button>Add Dog</button>

@@ -2,12 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
-
 function Photo(props) {
     const post = props.post
-    console.log("Post: " + post)
     return <figure className="figure"> 
-    <Link to={`/single/${post.id}`}> <img className= "responsive-image" src={post.imageLink} alt={post.description}/></Link>
+     <Link
+        key={post.id}
+        to={{
+          pathname: `/single/${post.id}`,
+          state: { modal: true }
+        }}
+        ><img src={post.imageLink} alt={post.description}/>
+      </Link>
         <figcaption><p> {post.description} </p></figcaption>
         <div className="button-container">
             {/* <button onClick={() => {
