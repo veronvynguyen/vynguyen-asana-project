@@ -69,7 +69,7 @@ export class Single extends Component {
                                 <Typography gutterBottom variant="h5" component="h2">
                                     {post.breed}
                                 </Typography>
-                                <Typography component="p">
+                                <Typography component="li">
                                     <ul className="list-group">
                                         <li className="list-group-item"><b>ID </b> <br></br> {post.id} </li>
                                         <li className="list-group-item"><b>Age </b> <br></br> {post.age} </li>
@@ -77,8 +77,8 @@ export class Single extends Component {
                                         <li className="list-group-item"><b>Personality </b> <br></br> {post.personality} </li>
                                         <li className="list-group-item"><b>Sheltered at </b> <br></br> {post.shelterAddress} </li>
                                         <li className="list-group-item"><b>Shelter's phone </b> <br></br> {post.shelterPhone} </li>
+                                        <li className="list-group-item"></li>
                                     </ul>
-                                    
                                 </Typography>
                                 </CardContent>
                             </CardActionArea>

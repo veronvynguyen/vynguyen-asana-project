@@ -51,9 +51,13 @@ body {
     transform: translateY(-3px);
 }
 
-.site-header {
+.site-header, .site-header a {
     text-align: center;
     color: white;
+}
+
+.site-header a:hover {
+    text-decoration: none,
 }
 
 .site-header h2 {

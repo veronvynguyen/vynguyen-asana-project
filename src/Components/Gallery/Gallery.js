@@ -2,6 +2,7 @@ import React from 'react'
 import Photo from './Photo'
 import PropTypes from 'prop-types'
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Link } from 'react-router-dom';
 
 function Gallery(props) {
     return (
@@ -12,7 +13,7 @@ function Gallery(props) {
             alignItems="center"
             >
             <div className="site-header">
-                <h2><span>Asana</span> Dog Adoption Agency</h2>
+                <Link to="/"><h2>Hall of Paws</h2></Link>
                 <blockquote class="site-header__quote">
                     <p>A dog will teach you unconditional love. If you can have that in your life, things won't be too bad.</p>
                     <cite>&mdash;Robert Wagner</cite>
