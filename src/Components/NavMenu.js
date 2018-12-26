@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Picture } from 'react-responsive-picture';
 import {
     Nav,
     Navbar,
@@ -24,8 +25,8 @@ export class NavMenu extends Component {
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">reactstrap</NavbarBrand>
+                {/* <Navbar color="light" light expand="md">
+                    <NavbarBrand href="/"><Picture src={logo}></Picture></NavbarBrand>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
@@ -36,7 +37,7 @@ export class NavMenu extends Component {
                             </NavItem>
                         </Nav>
                     </Collapse>
-                </Navbar>
+                </Navbar> */}
             </div>
         );
     }

@@ -37,16 +37,17 @@ class Main extends Component {
 
     render() {
         const { location } = this.props;
-     const isModal = !!(
-       location.state &&
-       location.state.modal &&
-       this.previousLocation !== location
-     ); // not initial render
+        
+        const isModal = !!(
+        location.state &&
+        location.state.modal &&
+        this.previousLocation !== location
+        ); 
 
         return (
             <div>
                 <NavMenu />
-                <Grid fluid>
+                <Grid container>
                     <Row className="show-grid">
                         <Col xs={12}>
                             <Switch location={isModal ? this.previousLocation : location}>

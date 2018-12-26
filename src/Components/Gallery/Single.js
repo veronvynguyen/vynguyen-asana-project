@@ -4,42 +4,26 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import IconButton from '@material-ui/core/IconButton';
 import CardMedia from '@material-ui/core/CardMedia';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
+import {ListGroup, ListGroupItem} from 'reactstrap';
 
-const styles = theme => ({
+const styles = {
     card: {
-        display: 'flex',
-        background: '#f5f5f5'
+      minWidth: 345,
+      maxWidth: 345,
+      height: "fit-content",
+      maxHeight: "calc(100vh - 100px)",
+      textAlign: "center",
+      overflow: "scroll",
+      
     },
     media: {
-        
+      maxHeight: 500,
+      height: 350
     },
-    details: {
-        display: 'flex',
-        flexDirection: 'column',
-      },
-      content: {
-        flex: '1 0 auto',
-      },
-      cover: {
-      //  width: 151,
-      },
-      controls: {
-        display: 'flex',
-        alignItems: 'center',
-        paddingLeft: theme.spacing.unit,
-        paddingBottom: theme.spacing.unit,
-      },
-      playIcon: {
-        height: 38,
-        width: 38,
-      },
-  });
+  };
 
   
 export class Single extends Component {
@@ -64,53 +48,41 @@ export class Single extends Component {
             justify="center"
             alignItems="center"
             >
-                <div onClick={back} class="modal-container" >
-                    <div className="modal"
+                <div onClick={back} class="modal-background" >
+                    <div className="modal-container justify-"
                         style={{
                             position: "fixed",
                             display: "flex",
-                           // background: "#fff",
                             top: 25,
-                            left: "10%",
-                            right: "10%",
-                            padding: 15,
-                            margin: "0 auto",
                         }}>
-                            <Card className={classes.card}>
-                                <div className={classes.details}>
-                                    <CardContent className={classes.content}>
-                                    <Typography component="h5" variant="h5">
-                                        Live From Space
-                                    </Typography>
-                                    <Typography variant="subtitle1" color="textSecondary">
-                                        Mac Miller
-                                    </Typography>
-                                    </CardContent>
-                                    <div className={classes.controls}>
-                                    <IconButton aria-label="Previous">
-                                        {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
-                                    </IconButton>
-                                    <IconButton aria-label="Play/pause">
-                                        <PlayArrowIcon className={classes.playIcon} />
-                                    </IconButton>
-                                    <IconButton aria-label="Next">
-                                        {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
-                                    </IconButton>
-                                    </div>
-                                </div>
+                        <Card className={classes.card}>
+                            <CardActionArea>
                                 <CardMedia
-                                    component="img"
-                                    alt={post.description}
-                                    className={classes.media}
-                                    // height="140"
-                                    image={post.imageLink}
-                                    title={post.name}
-                                    />
-                            </Card>
-                          {/*   <h3>{post.name}</h3> 
-                            <button type="button" onClick={back}>
-                                Close
-                            </button> */}
+                                className={classes.media}
+                                image={post.imageLink}
+                                title={post.name}
+                                />
+                                <CardContent>
+                                <Typography gutterBottom variant="h3" component="h2">
+                                    {post.name}
+                                </Typography>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {post.breed}
+                                </Typography>
+                                <Typography component="p">
+                                    <ul className="list-group">
+                                        <li className="list-group-item"><b>ID </b> <br></br> {post.id} </li>
+                                        <li className="list-group-item"><b>Age </b> <br></br> {post.age} </li>
+                                        <li className="list-group-item"><b>Gender </b> <br></br> {post.gender} </li>
+                                        <li className="list-group-item"><b>Personality </b> <br></br> {post.personality} </li>
+                                        <li className="list-group-item"><b>Sheltered at </b> <br></br> {post.shelterAddress} </li>
+                                        <li className="list-group-item"><b>Shelter's phone </b> <br></br> {post.shelterPhone} </li>
+                                    </ul>
+                                    
+                                </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                         </Card>
                     </div>
                 </div>
             </Grid>
@@ -122,7 +94,6 @@ export class Single extends Component {
 
 Single.propTypes = {
     classes: PropTypes.object.isRequired,
-    theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(Single);
+export default withStyles(styles)(Single);
