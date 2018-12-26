@@ -10,6 +10,9 @@
 
 img {
     --orig-width: 100%;
+    --rising-webkit: all 0.3s cubic-bezier(0.15, 1, 0.33, 1) 0s;
+    --rising-transition: all 0.3s cubic-bezier(0.15, 1, 0.33, 1) 0s;
+    --special-box-shadow: rgba(91, 94, 99, 0.2) 0px 1px 1px, rgba(108, 114, 125, 0.25) 0px 0px 0.5px 0px;
 }
 
 body {
@@ -71,9 +74,9 @@ body {
     border-radius: 3px;
     overflow: hidden;
     background-repeat: no-repeat;
-    -webkit-transition: all 0.3s cubic-bezier(0.15, 1, 0.33, 1) 0s;
-    transition: all 0.3s cubic-bezier(0.15, 1, 0.33, 1) 0s;
-    box-shadow: rgba(91, 94, 99, 0.2) 0px 1px 1px, rgba(108, 114, 125, 0.25) 0px 0px 0.5px 0px;
+    -webkit-transition: var(--rising-webkit);
+    transition: var(--rising-transition);
+    box-shadow: var(--special-box-shadow);
   }
 
 .gallery img {
@@ -111,7 +114,7 @@ body {
 }
 
 .site-footer {
-    position: fixed;
+    position: static;
     left: 0;
     bottom: 0;
     padding: .5rem;
@@ -137,3 +140,52 @@ body {
     line-height: 1.6em;
     margin: 0 auto;
 }
+
+/* Forms */
+.form {
+    margin: 0 auto;
+    max-width: 620px;
+}
+
+form {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 20px;
+    padding-bottom: 5rem;
+}
+
+.form-graphic {
+    margin: 150px 100px;
+    width: 80%;
+}
+
+.form h1 {
+    color: white;
+    padding-bottom: 20px;
+}
+
+label {
+    float: left;
+    width: 150px;
+    padding-right: 24px;
+}
+
+input {
+    float: left;
+    opacity: .9;
+    border: none;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+button {
+    float: right;
+    width: calc(100% - 200px);
+}
+
+input,
+button {
+    grid-column: 2 / 3;
+}
+
