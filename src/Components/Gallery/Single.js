@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
-import Photo from '../Gallery/Photo'
+import React, {Component} from 'react';
+import Photo from '../Gallery/Photo';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 class Single extends Component {
     render() {
         const {match, posts} = this.props
-        console.log("Single: " + posts);
         const id = Number(match.params.id)
         const post = posts.find((post) => post.id === id)
         const index = this.props.posts.findIndex((post) => post.id === id)
