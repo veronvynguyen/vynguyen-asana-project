@@ -25,5 +25,3 @@ yarn-error.log*
 #project
 src/database
 src/data
-.firebase
-firebase.json

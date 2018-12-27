@@ -24,7 +24,6 @@ export function startLoadingPost() {
     }
 }
 
-
 export function startAddingComment(comment, postId) {
     return (dispatch) => {
         return database.ref('comments/'+postId).push(comment).then(() => {

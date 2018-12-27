@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
 import { Picture } from 'react-responsive-picture';
-// import Dog from '../../images/Dog.png';
 
+// This functionality is still in development
 class AddPhoto extends Component {
   state = {
     id: Number(new Date()),
@@ -84,27 +84,37 @@ class AddPhoto extends Component {
               onUploadSuccess={this.handleUploadSuccess}
               onProgress={this.handleProgress}
           />
+
           <label for="name">Name</label>
           <input type="text" ref="name" placeholder="Enter dog's name" onChange={this.handlePostChange}/>
+
           <label for="age">Age</label>
           <input type="text" ref="age" placeholder="Enter dog's age" onChange={this.handlePostChange}/>
+
           <label for="weight">Weight</label>
           <input type="text" ref="weight" placeholder="Enter dog's weight in lbs" onChange={this.handlePostChange}/>
+
           <label for="gender">Gender</label>
           <input type="text" ref="gender" placeholder="M/F" onChange={this.handlePostChange}/>
+
           <label for="breed">Breed</label>
           <input type="text" ref="breed" placeholder="Enter dod's breed" onChange={this.handlePostChange}/>
+
           <label for="personality">Personality/Temperament</label>
           <input type="text" ref="personality" placeholder="Ex. Social butterfly, quick learner" onChange={this.handlePostChange}/>
+
           <label for="shelterAddress">Shelter's Address</label>
           <input type="text" ref="shelterAddress" placeholder="Ex. 3921 Canine, CA 28129" onChange={this.handlePostChange}/>
+
           <label for="shelterPhone">Shelter's Phone</label>
           <input type="text" ref="shelterPhone" placeholder="Ex. (714) 492-2912" onChange={this.handlePostChange}/>
+
           <label for="shelterEmail">Shelter's Email</label>
           <input type="text" ref="shelterEmail" placeholder="Ex. doglovers@example.com" onChange={this.handlePostChange}/>
 
           {this.state.isUploading && <p>Progress: {this.state.progress}%</p>}
           {this.state.imageLink && <Picture src={this.state.imageLink} className="uploadImg"/>}
+
           <input type="submit" />
         </form>
       </div>

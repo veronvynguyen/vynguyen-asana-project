@@ -1,8 +1,5 @@
 import React from 'react';
-import { 
-  Icon, 
-  Input 
-} from 'antd';
+import { Icon, Input } from 'antd';
 import {
   Nav,
   Navbar,

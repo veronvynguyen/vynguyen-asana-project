@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import Gallery from './Gallery';
 import AddPhoto from './Admin/AddPhoto';
 import {Route, Link, Switch} from 'react-router-dom';
-import { Grid, Row, Col } from 'react-flexbox-grid';
-import { NavMenu } from './NavMenu';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ModalContainer, ModalRoute } from 'react-router-modal';
+import { Grid } from 'react-flexbox-grid';
 
 class Main extends Component {
     state = { 
@@ -14,7 +11,7 @@ class Main extends Component {
 
     componentDidMount() {
         this.props.startLoadingPost().then(() => {
-            this.setState({loading: false})
+            this.setState({loading: false});
         })
     }
 
@@ -42,7 +39,9 @@ class Main extends Component {
         ); 
 
         return (
-            <div>
+        <>
+            <Grid container>
+        
                 <Switch location={isModal ? this.previousLocation : location}>
                     <Route exact path="/" render={() => (
                         <div>
@@ -54,10 +53,13 @@ class Main extends Component {
                         <AddPhoto {...this.props} onHistory={history}/>
                     )}/>
                 </Switch>
-                <div className="site-footer">
-                    <FontAwesomeIcon name="fa-paw"/> Built by a wonderful developer for Asana.
-                </div>
-            </div>
+                
+                    {/* <div className="site-footer">
+                        <p>Built by a wonderful developer for Asana.</p>
+                    </div> */}
+               
+            </Grid>
+            </>
         )
     }
 }
