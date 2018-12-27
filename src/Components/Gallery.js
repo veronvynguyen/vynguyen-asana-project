@@ -1,9 +1,9 @@
 import 'antd/dist/antd.css'
 import React, { Component, Fragment } from 'react'
+import {Link} from 'react-router-dom'
 import lodash from 'lodash'
 import { Icon } from 'antd'
 import data from '../data/data'
-import Header from './Header'
 import NavMenu from './NavMenu'
 import { Grid, Slug, Fade } from 'mauerwerk'
 import "../styles/site.css"
@@ -14,10 +14,9 @@ const Cell = ({ toggle, name, height, description, css, maximized }) => (
     style={{ backgroundImage: css, cursor: !maximized ? 'pointer' : 'auto' }}
     onClick={!maximized ? toggle : undefined}>
     
-    <Fade show={maximized} delay={maximized ? 400 : 0}>
+    <Fade show={maximized} delay={maximized ? 50 : 0}>
       <div className="details">
-        <Slug delay={600}>
-          <div className="circle" style={{ background: css }} />
+        <Slug delay={60}>
           <div className="close">
             <Icon type="close" style={{ cursor: 'pointer' }} onClick={toggle} />
           </div>
@@ -26,14 +25,14 @@ const Cell = ({ toggle, name, height, description, css, maximized }) => (
         </Slug>
       </div>
     </Fade>
-    <Fade
+    {/* <Fade
       show={!maximized}
       from={{ opacity: 0, transform: 'translate3d(0,140px,0)' }}
       enter={{ opacity: 1, transform: 'translate3d(0,0px,0)' }}
       leave={{ opacity: 0, transform: 'translate3d(0,-50px,0)' }}
-      delay={maximized ? 0 : 400}>
+      delay={maximized ? 0 : 50}>
       <div className="default">{name}</div>
-    </Fade>
+    </Fade> */}
   </div>
 )
 
@@ -41,10 +40,7 @@ class Gallery extends Component {
   state = { data, columns: 4, margin: 20, filter: '', height: false }
  
   search = e => this.setState({ filter: e.target.value })
-  // shuffle = () => this.setState(state => ({ data: lodash.shuffle(state.data) }))
-  // setColumns = e => this.setState({ columns: parseInt(e.key) })
-  // setMargin = e => this.setState({ margin: parseInt(e.key) })
-  // setHeight = e => this.setState({ height: e })
+
   render() {
     const data = this.state.data.filter(
       d => d.name.toLowerCase().indexOf(this.state.filter) != -1
@@ -52,14 +48,13 @@ class Gallery extends Component {
     console.log(this.props);
     return (
       <div className="main">
-        <NavMenu
-          {...this.state}
+        {/* <NavMenu {...this.state}
           search={this.search}
-          // shuffle={this.shuffle}
-          // setColumns={this.setColumns}
-          // setMargin={this.setMargin}
-          // setHeight={this.setHeight}
-        />
+        /> */}
+        <div className="site-header">
+          <Link to="/"><h2>Asana PawScope</h2></Link>
+          <p>Find a furry friend to adopt in the Bay Area</p>
+        </div>
         <Grid
           className="grid"
           // Arbitrary data, should contain keys, possibly heights, etc.
@@ -75,7 +70,7 @@ class Gallery extends Component {
           // Removes the possibility to scroll away from a maximized element
           lockScroll={false}
           // Delay when active elements (blown up) are minimized again
-          closeDelay={400}>
+          closeDelay={50}>
           {(data, maximized, toggle) => (
             <Cell {...data} maximized={maximized} toggle={toggle} />
           )}
