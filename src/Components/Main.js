@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import AsanaGallery from './Gallery/Gallery';
+import Gallery from './Gallery';
 import AddPhoto from './Admin/AddPhoto';
 import {Route, Link, Switch} from 'react-router-dom';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { NavMenu } from './NavMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ModalContainer, ModalRoute } from 'react-router-modal';
-import Modal from "./Modal";
-import Single from './Gallery/Single';
-import "../styles/modal.css"
-
 
 class Main extends Component {
     state = { 
@@ -22,6 +18,7 @@ class Main extends Component {
         })
     }
 
+    // Close the modal on location click
     previousLocation = this.props.location;
 
     componentWillUpdate(nextProps) {
@@ -37,7 +34,7 @@ class Main extends Component {
 
     render() {
         const { location } = this.props;
-        
+
         const isModal = !!(
         location.state &&
         location.state.modal &&
@@ -46,32 +43,20 @@ class Main extends Component {
 
         return (
             <div>
-                <NavMenu />
-                <Grid container>
-                    <Row className="show-grid">
-                        <Col xs={12}>
-                            <Switch location={isModal ? this.previousLocation : location}>
-                            <Route exact path="/" render={() => (
-                                <div>
-                                    <AsanaGallery {...this.props} />
-                                </div>
-                            )}/>
+                <Switch location={isModal ? this.previousLocation : location}>
+                    <Route exact path="/" render={() => (
+                        <div>
+                            <Gallery {...this.props} />
+                        </div>
+                    )}/>
 
-                            <Route path="/AddPhoto" render = {({history}) => (
-                                <AddPhoto {...this.props} onHistory={history}/>
-                            )}/>
-                            </Switch>
-                            
-                            {isModal ?  <Route exact path="/single/:id" render = {(params) => (
-                            <Single loading={this.state.loading} {...this.props} {...params}/> )}/> : null }
-                        </Col>
-                    </Row>
-                </Grid>
+                    <Route path="/AddPhoto" render = {({history}) => (
+                        <AddPhoto {...this.props} onHistory={history}/>
+                    )}/>
+                </Switch>
                 <div className="site-footer">
-                   <FontAwesomeIcon name="fa-paw"/> Built by a wonderful developer for Asana.
+                    <FontAwesomeIcon name="fa-paw"/> Built by a wonderful developer for Asana.
                 </div>
-
-            <ModalContainer />
             </div>
         )
     }

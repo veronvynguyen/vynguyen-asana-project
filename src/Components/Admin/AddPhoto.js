@@ -17,6 +17,7 @@ class AddPhoto extends Component {
     shelterPhone: "",
     shelterEmail: "",
     imageLink: "",
+    css: "",
     isUploading: false,
     progress: 0,
   };
@@ -36,7 +37,6 @@ class AddPhoto extends Component {
   }
 
   submitData = event => {
-    
     firebase.database()
       .ref(`posts/${this.state.id}`).set({
         id: this.state.id,
@@ -50,6 +50,7 @@ class AddPhoto extends Component {
         shelterPhone: this.state.shelterPhone,
         shelterEmail: this.state.shelterEmail,
         imageLink: this.state.imageLink,
+        css: this.state.css
       }).catch(error => console.log(error));
   }
 
@@ -64,6 +65,7 @@ class AddPhoto extends Component {
     
     firebase.storage().ref('images').child(filename).getDownloadURL().then(url => {
         this.setState({imageLink: url});
+        this.setState({css: 'url("' + url + "')"});
     })
   }
   
