@@ -48,7 +48,7 @@ class Gallery extends Component {
       <div className="main">
         <div className="site-header">
           <Link to="/"><h2>Asana PawScope</h2></Link>
-          <p>Visit our wonderful furry companions at their Bay Area-based shelters</p>
+          <p>Visit our wonderful furry companions at a shelter near you</p>
         </div>
         <Grid
           className="grid"

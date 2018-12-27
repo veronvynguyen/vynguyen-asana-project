@@ -128,6 +128,7 @@ body,
 
 .grid {
   flex: 1;
+  margin-bottom: 50px;
 }
 
 .ant-btn-primary {
@@ -135,7 +136,6 @@ body,
   border-color: #ca6a9a !important;
 }
   
-
 /*
 * Forms
 */
@@ -187,7 +187,7 @@ form {
 }
 
 .cell {
-  font-family: 'Fredoka+One', 'Varela Round','Quicksand', sans-serif;
+  font-family: 'Fredoka+One', 'Varela Round','Quicksand', 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
   position: relative;
   background-size: cover;
   width: 100%;
@@ -206,6 +206,10 @@ form {
 
 .site-header {
 	text-align: center;
+}
+
+.site-header a {
+  text-decoration: none;
 }
 
 .site-header a:hover {
@@ -230,6 +234,7 @@ form {
 }
 
 .site-footer {
+  font-family: 'Valera Round', 'Quicksand', sans-serif !important;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -237,16 +242,21 @@ form {
   background-color: #fafafa;
   color: #777;
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: normal;
-  padding: 15px;
+  padding-top: 10px;
+  z-index: 1000;
 }
 
 .site-footer {
   clear: left;
 }
 
-@media (min-width: 767px) {
+.site-footer p:before {
+  content: url('/images/paw.png');
+}
+
+@media (max-width: 767px) {
   body {
       background-repeat: no-repeat !important;
   }
@@ -264,7 +274,7 @@ form {
   }
 }
 
-@media (min-width: 374px) {
+@media (max-width: 375px) {
   .site-header p {
     color: #fafafa;
     font-size: 19px;
@@ -274,7 +284,45 @@ form {
     border-left: hidden;
   }
 
-  /* .cell {
-    height: 6vh;
-  } */
+  .grid > div > div {
+    position: relative !important;
+    height: 45vh !important;
+    width: 100% !important;
+    transform: unset !important;
+    padding: 10px;
+  }
+
+  .grid > div {
+    overflow: scroll !important;
+  }
+
+  .details {
+    justify-content: flex-end !important;
+    background: #ffffff99;
+    padding: 12px;
+    width: 100%;
+  }
+
+  .details h1 {
+    color: #000000;
+    font-size: 16px;
+    line-height: 0;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    max-width: 350px;
+  }
+
+  .details p {
+    color: #040404;
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0;
+    padding-top: 9px;
+    word-break: break-word;
+    --defaultWidth: 100%;
+    min-width: calc(var(--defaultWidth) / 2);
+    max-width: var(--defaultWidth);
+    width: 100%;
+  }
 }

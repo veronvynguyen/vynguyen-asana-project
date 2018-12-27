@@ -3,7 +3,7 @@ import firebase from "firebase";
 import FileUploader from "react-firebase-file-uploader";
 import { Picture } from 'react-responsive-picture';
 
-// This functionality is still in development
+// This photo uploader feature is still in development
 class AddPhoto extends Component {
   state = {
     id: Number(new Date()),
