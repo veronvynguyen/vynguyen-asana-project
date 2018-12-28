@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import Gallery from './Gallery';
-import AddPhoto from './Admin/AddPhoto';
-import About from './About';
 import {Route, Switch, Link} from 'react-router-dom';
 import { Grid } from 'react-flexbox-grid';
-import NavMenu from './NavMenu';
 import Footer from './Footer';
 
 class Main extends Component {
@@ -21,8 +18,6 @@ class Main extends Component {
     render() {
         return (
             <>  
-                <NavMenu />
-
                 <Grid container>
                     <Switch>
                         <Route exact path="/" render={() => (
@@ -30,19 +25,8 @@ class Main extends Component {
                                 <Gallery {...this.props} />
                             </>
                         )}/>
-
-                        <Route path="/About" render={() => (
-                            <>
-                                <About {...this.props} />
-                            </>
-                        )}/>
-
-                        <Route path="/AddPhoto" render = {({history}) => (
-                            <AddPhoto {...this.props} onHistory={history}/>
-                        )}/>
                     </Switch>
                 </Grid>
-
                 <Footer />
             </>
         )

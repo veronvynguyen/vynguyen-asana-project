@@ -6,7 +6,7 @@ import data from '../data/data';
 import { Grid, Fade } from 'mauerwerk';
 import Header from './Header';
 
-const Cell = ({ toggle, name, height, description, breed, age, gender, shelter, contact, css, maximized }) => ( 
+const Cell = ({ toggle, height, name, age, description, breed, gender, shelter, shelterAddress, contact, css, maximized }) => ( 
   <div
     className="cell"
     style={{ backgroundImage: css, cursor: !maximized ? 'pointer' : 'auto' }}
@@ -17,19 +17,21 @@ const Cell = ({ toggle, name, height, description, breed, age, gender, shelter, 
           <div className="close">
             <Icon type="close" style={{ cursor: 'pointer' }} onClick={toggle} />
           </div>
-          <h1>{name}, {gender}, {breed}</h1>
+          <h1>{name}, {age}, {gender}</h1>
+          <p><b>{breed}</b></p>
           <p>{description}</p>
-          <p><b className="detail-label">Find {name} at:</b> {shelter}</p>
-          <p><b className="detail-label">Contact shelter:</b> {contact}</p>
+          <p><b className="detail-label">Find at:</b> {shelter}</p>
+          <p><b className="detail-label">Shelter Address:</b> {shelterAddress}</p>
+          <p><b className="detail-label">Shelter #:</b> {contact}</p>
       </div>
     </Fade>
     <Fade
       show={!maximized}
-      from={{ opacity: 0, transform: 'translate3d(0,140px,0)' }}
+      from={{ opacity: 0, transform: 'translate3d(0,0px,0)' }}
       enter={{ opacity: 1, transform: 'translate3d(0,0px,0)' }}
-      leave={{ opacity: 0, transform: 'translate3d(0,-50px,0)' }}
+      leave={{ opacity: 0, transform: 'translate3d(0,0px,0)' }}
       delay={maximized ? 0 : 50}>
-      <div className="default">{name}<br></br>{breed}</div>
+      <div className="default">{name}, {age}<br></br>{breed}</div>
     </Fade>
   </div>
 )

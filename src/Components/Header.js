@@ -1,10 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
 export default function() {
   return (
     <div className="site-header">
-        <p>Visit our furry companions at their Bay Area-based shelters</p>
+        <h1>Meet Our Furry Companions</h1>
+        <blockquote class="site-header__quote">
+          <p>A dog will teach you <span>unconditional</span> love. If you can have that in your life, things won't be too bad.</p>
+          <cite>&mdash;Robert Wagner</cite>
+        </blockquote>
     </div>
   )
 }
