@@ -1,12 +1,12 @@
 import 'antd/dist/antd.css';
 import '../styles/site.css';
 import React, { Component, Fragment } from 'react';
-import {Link} from 'react-router-dom';
 import { Icon } from 'antd';
 import data from '../data/data';
 import { Grid, Fade } from 'mauerwerk';
+import Header from './Header';
 
-const Cell = ({ toggle, name, height, description, breed, shelter, contact, css, maximized }) => ( 
+const Cell = ({ toggle, name, height, description, breed, age, gender, shelter, contact, css, maximized }) => ( 
   <div
     className="cell"
     style={{ backgroundImage: css, cursor: !maximized ? 'pointer' : 'auto' }}
@@ -17,10 +17,10 @@ const Cell = ({ toggle, name, height, description, breed, shelter, contact, css,
           <div className="close">
             <Icon type="close" style={{ cursor: 'pointer' }} onClick={toggle} />
           </div>
-          <h1>{name}, {breed}</h1>
+          <h1>{name}, {gender}, {breed}</h1>
           <p>{description}</p>
-          <p><b>Sheltered at:</b> {shelter}</p>
-          <p><b>Contact for more info:</b> {contact}</p>
+          <p><b className="detail-label">Find {name} at:</b> {shelter}</p>
+          <p><b className="detail-label">Contact shelter:</b> {contact}</p>
       </div>
     </Fade>
     <Fade
@@ -29,7 +29,7 @@ const Cell = ({ toggle, name, height, description, breed, shelter, contact, css,
       enter={{ opacity: 1, transform: 'translate3d(0,0px,0)' }}
       leave={{ opacity: 0, transform: 'translate3d(0,-50px,0)' }}
       delay={maximized ? 0 : 50}>
-      <div className="default">{name}</div>
+      <div className="default">{name}<br></br>{breed}</div>
     </Fade>
   </div>
 )
@@ -45,32 +45,32 @@ class Gallery extends Component {
     )
 
     return (
-      <div className="main">
-        <div className="site-header">
-          <Link to="/"><h2>Asana PawScope</h2></Link>
-          <p>Visit our wonderful furry companions at a shelter near you</p>
+      <>
+        <div className="main">
+          <Header />
+          <Grid
+            className="grid"
+            // Arbitrary data, should contain keys, possibly heights, etc.
+            data={data}
+            // Key accessor, instructs grid on how to fet individual keys from the data set
+            keys={d => d.name}
+            // Can be a fixed value or an individual data accessor
+            heights={this.state.height ? d => d.height : 200}
+            // Number of columns
+            columns={this.state.columns}
+            // Space between elements
+            margin={this.state.margin}
+            // Removes the possibility to scroll away from a maximized element
+            lockScroll={false}
+            // Delay when active elements (blown up) are minimized again
+            closeDelay={50}>
+            {(data, maximized, toggle) => (
+              <Cell {...data} maximized={maximized} toggle={toggle} />
+            )}
+          
+          </Grid>
         </div>
-        <Grid
-          className="grid"
-          // Arbitrary data, should contain keys, possibly heights, etc.
-          data={data}
-          // Key accessor, instructs grid on how to fet individual keys from the data set
-          keys={d => d.name}
-          // Can be a fixed value or an individual data accessor
-          heights={this.state.height ? d => d.height : 200}
-          // Number of columns
-          columns={this.state.columns}
-          // Space between elements
-          margin={this.state.margin}
-          // Removes the possibility to scroll away from a maximized element
-          lockScroll={false}
-          // Delay when active elements (blown up) are minimized again
-          closeDelay={50}>
-          {(data, maximized, toggle) => (
-            <Cell {...data} maximized={maximized} toggle={toggle} />
-          )}
-        </Grid>
-      </div>
+      </>
     )
   }
 }

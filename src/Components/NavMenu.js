@@ -1,5 +1,8 @@
 import React from 'react';
 import { Icon, Input } from 'antd';
+import logo from '../images/logo.png';
+import { Picture } from 'react-responsive-picture';
+
 import {
   Nav,
   Navbar,
@@ -12,14 +15,9 @@ export default function({
   return (
     <Navbar color="light" light expand="md">
         <NavbarBrand href="/">
-            {/* <Picture src={logo}></Picture> */}
+            <Picture src={logo} alt="Adopt a dog in the Bay Area"></Picture>
         </NavbarBrand>
         <Nav className="ml-auto" navbar>
-        <Input
-          style={{ marginLeft: 15, minWidth: 130, maxWidth: 300 }}
-          suffix={<Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />}
-          placeholder="input search text"
-          onChange={search}/>
         </Nav>
     </Navbar>
   )

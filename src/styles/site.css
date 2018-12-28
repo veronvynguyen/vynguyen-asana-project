@@ -19,97 +19,6 @@ body,
     helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
 
-.cell {
-  position: relative;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  color: #777777;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: box-shadow 0.5s;
-  font-size: 10px;
-  line-height: 10px;
-  border-radius: 3px;
-  box-shadow: rgba(91, 94, 99, 0.2) 0px 1px 1px, rgba(108, 114, 125, 0.25) 0px 0px 0.5px 0px;
-  background-size: cover;
-  background-position: center;
-}
-
-.default {
-  font-weight: bold; 
-  margin-top: 7rem;
-  position: absolute;
-  background: rgba(0, 0, 0, 0.25);
-  color: #fff;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 10px;
-  border-radius: 2px;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.cell:hover {
-  box-shadow: 0px 20px 60px -10px rgba(0, 0, 0, 0.3);
-}
-
-.details {
-  display: flex;
-  background: #ffffff73;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  padding: 40px;
-  font-weight: 100;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.details h1 {
-  color: #000000;
-  font-size: 26px;
-  line-height: 26px;
-  font-weight: 600;
-  margin: 0;
-  padding: 0;
-  max-width: 350px;
-}
-
-.details p {
-  color: #212121;
-  font-size: 18px;
-  line-height: 18px;
-  margin: 0;
-  padding-top: 15px;    
-  max-width: calc(100% - 200px);
-  min-width: 500px;
-}
-
-.circle {
-  position: absolute;
-  top: calc(50% - 140px);
-  left: calc(50% - 140px);
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  box-shadow: 0px 20px 60px -10px rgba(0, 0, 0, 0.2);
-}
-
-.close {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-  font-size: 26px;
-  color: black;
-}
-
 .main {
   position: relative;
   width: 100%;
@@ -135,6 +44,92 @@ body,
   background-color: #ca6a9a !important;
   border-color: #ca6a9a !important;
 }
+
+.cell {
+  position: relative;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #777777;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.5s;
+  font-size: 10px;
+  line-height: 10px;
+  border-radius: 3px;
+  box-shadow: rgba(91, 94, 99, 0.2) 0px 1px 1px, rgba(108, 114, 125, 0.25) 0px 0px 0.5px 0px;
+  background-size: cover;
+  background-position: center;
+}
+
+.cell:hover {
+  box-shadow: 0px 20px 60px -10px rgba(0, 0, 0, 0.3);
+}
+
+.default {
+  font-weight: bold; 
+  margin-top: 7rem;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+}
+
+.details {
+  display: flex;
+  background: #ffffff73;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  font-weight: 100;
+  flex-direction: column;
+  justify-content: center;
+  text-transform: none;
+}
+
+.details h1 {
+  color: #000000;
+  font-size: 26px;
+  line-height: 26px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  max-width: 350px;
+}
+
+.details p {
+  color: #212121;
+  font-size: 18px;
+  line-height: 18px;
+  margin: 0;
+  padding-top: 15px;    
+  min-width: calc(100% / 2);
+}
+
+.details-label {
+  font-weight:bold;
+}
+
+.close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-size: 26px;
+  color: black;
+}
   
 /*
 * Forms
@@ -147,43 +142,6 @@ form {
 
 .upload h1, {
   color: white;
-}
-
-.form input {
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-  opacity: .9;
-  border-radius: 2px;
-  padding: 10px;
-}
-
-.form button {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background:#065784;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-
-.form button:hover,.form button:active,.form button:focus {
-  background: #7B8589;
-}
-
-.form-graphic {
-  margin: 150px 100px;
-  width: 80%;
 }
 
 .cell {
@@ -256,25 +214,57 @@ form {
   content: url('/images/paw.png');
 }
 
-@media (max-width: 767px) {
-  body {
-      background-repeat: no-repeat !important;
-  }
+.form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  opacity: .9;
+  border-radius: 2px;
+  padding: 10px;
+}
 
-  .details {
-    justify-content: flex-end;
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background:#065784;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.form button:hover,.form button:active,.form button:focus {
+  background: #7B8589;
+}
+
+.form-graphic {
+  margin: 150px 100px;
+  width: 80%;
+}
+
+.about {
+  
+}
+
+@media only screen and (max-width: 762px) {
+  body {
+    background-repeat: no-repeat !important;
   }
 
   .site-header  {
-      padding-top: 50px;
+      height: 100px !important;
+      margin-top: 10px;
   }
 
-  form {
-      margin: 0 auto;
-  }
-}
-
-@media (max-width: 375px) {
   .site-header p {
     color: #fafafa;
     font-size: 19px;
@@ -297,10 +287,12 @@ form {
   }
 
   .details {
+    font-family: 'Valera Round', sans-serif;
     justify-content: flex-end !important;
     background: #ffffff99;
     padding: 12px;
     width: 100%;
+    justify-content: flex-end !important;
   }
 
   .details h1 {
@@ -324,5 +316,23 @@ form {
     min-width: calc(var(--defaultWidth) / 2);
     max-width: var(--defaultWidth);
     width: 100%;
+  }
+
+  .close {
+    top: 30px;
+    right: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: .4;
+  }
+
+  form {
+    margin: 0 auto;
+  }
+
+  .site-footer {
+    height: auto;
+    max-height: calc(100% / 22) !important;
+    min-height: 40px;
   }
 }

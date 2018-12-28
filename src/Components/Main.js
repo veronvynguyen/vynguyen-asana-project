@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Gallery from './Gallery';
 import AddPhoto from './Admin/AddPhoto';
+import About from './About';
 import {Route, Switch, Link} from 'react-router-dom';
 import { Grid } from 'react-flexbox-grid';
+import NavMenu from './NavMenu';
+import Footer from './Footer';
 
 class Main extends Component {
     state = { 
@@ -18,23 +21,29 @@ class Main extends Component {
     render() {
         return (
             <>  
-                <Grid container>
-                        <Switch>
-                            <Route exact path="/" render={() => (
-                                <div>
-                                    <Gallery {...this.props} />
-                                </div>
-                            )}/>
+                <NavMenu />
 
-                            <Route path="/AddPhoto" render = {({history}) => (
-                                <AddPhoto {...this.props} onHistory={history}/>
-                            )}/>
-                        </Switch>
-                
+                <Grid container>
+                    <Switch>
+                        <Route exact path="/" render={() => (
+                            <>
+                                <Gallery {...this.props} />
+                            </>
+                        )}/>
+
+                        <Route path="/About" render={() => (
+                            <>
+                                <About {...this.props} />
+                            </>
+                        )}/>
+
+                        <Route path="/AddPhoto" render = {({history}) => (
+                            <AddPhoto {...this.props} onHistory={history}/>
+                        )}/>
+                    </Switch>
                 </Grid>
-                <div className="site-footer">
-                    <p>© Built by a wonderful developer for <b><a href="https://www.asana.com">Asana.</a></b></p>
-                </div>  
+
+                <Footer />
             </>
         )
     }
