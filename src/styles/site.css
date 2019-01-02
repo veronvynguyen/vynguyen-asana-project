@@ -36,14 +36,11 @@ body,
   margin-bottom: 50px;
 }
 
-.ant-btn-primary {
-  background-color: #ca6a9a !important;
-  border-color: #ca6a9a !important;
-}
-
 .cell {
+  font-family: 'Quicksand', 'Fredoka+One', Helvetica, Arial, sans-serif;
   position: relative;
-  background-size: cover;
+  background-position: center !important;
+  background-size: cover !important;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -52,17 +49,56 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 10px 60px -10px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.5s;
   font-size: 10px;
   line-height: 10px;
-  border-radius: 3px;
-  box-shadow: rgba(91, 94, 99, 0.2) 0px 1px 1px, rgba(108, 114, 125, 0.25) 0px 0px 0.5px 0px;
-  background-size: cover;
-  background-position: center;
 }
 
 .cell:hover {
   box-shadow: 0px 20px 60px -10px rgba(0, 0, 0, 0.3);
+}
+
+.site-header {
+  text-align: center;
+  margin: 30px 0 10px 0;
+}
+
+.site-header a:hover {
+  text-decoration: none;
+}
+
+.site-header h1 {    
+  color: #fafafa;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+blockquote {
+  border-left: none;
+  font-size: 17.5px;
+  color: #ffffff;
+  width: 45%;
+  margin: 0 auto;
+}
+
+blockquote p::before,
+blockquote p::after {
+   content: "“";
+}
+
+blockquote p::after {
+  content: "”";
+}
+
+.site-header__quote p {
+  margin-bottom: 5px;
+}
+
+.site-header__quote span {
+  color: white;
+  font-size: 19px;
+  font-weight:bold;
 }
 
 .default {
@@ -110,6 +146,7 @@ body,
   color: #212121;
   font-size: 18px;
   line-height: 18px;
+  font-weight: normal;
   margin: 0;
   padding-top: 15px;    
   min-width: calc(100% / 2);
@@ -125,79 +162,6 @@ body,
   right: 40px;
   font-size: 26px;
   color: black;
-}
-  
-/*
-* Forms
-*/
-form {
-  width: 360px;
-  padding: 0 0 0;
-  margin-bottom: 40px;
-}
-
-.upload h1, {
-  color: white;
-}
-
-.cell {
-  font-family: 'Quicksand', 'Fredoka+One', Helvetica, Arial, sans-serif;
-  position: relative;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  color: #777777;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 10px 60px -10px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.5s;
-  font-size: 10px;
-  line-height: 10px;
-}
-
-.site-header {
-  text-align: center;
-  margin: 30px 0 10px 0;
-}
-
-.site-header a:hover {
-  text-decoration: none;
-}
-
-.site-header h1 {    
-  color: #fafafa;
-  padding: 10px;
-  margin: 0 auto;
-}
-
-blockquote {
-  border-left: none;
-  font-size: 17.5px;
-  color: #ffffff;
-  width: 45%;
-  margin: 0 auto;
-}
-
-blockquote p::before,
-blockquote p::after {
-   content: "“";
-}
-
-blockquote p::after {
-  content: "”";
-}
-
-.site-header__quote p {
-  margin-bottom: 5px;
-}
-
-.site-header__quote span {
-  color: white;
-  font-size: 19px;
-  font-weight:bold;
 }
 
 .site-footer {
@@ -223,60 +187,6 @@ blockquote p::after {
   width: 16px;
   padding: 1px;
   margin-right: 3px;
-}
-
-.form input {
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-  opacity: .9;
-  border-radius: 2px;
-  padding: 10px;
-}
-
-.form button {
-  text-transform: uppercase;
-  outline: 0;
-  background:#065784;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-
-.form button:hover,.form button:active,.form button:focus {
-  background: #7B8589;
-}
-
-.form-graphic {
-  margin: 150px 100px;
-  width: 80%;
-}
-
-.aboutImg {
-  width: calc(100% - 250px);
-  margin: 10rem;
-}
-
-.about {
-  font-family: var(--defaultFonts);
-  display: flex;
-  flex-wrap: row wrap;
-  justify-content: center;
-  color: white;
-  flex: 1 0px;
-}
-
-.about blockquote {
-  border-left: none;
 }
 
 @media all and (max-width: 762px) {
@@ -308,21 +218,22 @@ blockquote p::after {
 
   .grid > div > div {
     position: relative !important;
-    height: 45vh !important;
+    height: 40vh !important;
     width: 100% !important;
+    -webkit-transform: unset !important;
     transform: unset !important;
-    padding: 10px;
+    padding: 15px;
   }
 
   .grid > div {
     overflow: scroll !important;
   }
 
-  .details {
-    font-family: 'Valera Round', sans-serif;
+  .details {  
+    font-family: 'Quicksand', 'Fredoka+One', Helvetica, Arial, sans-serif;
     justify-content: flex-end !important;
     background: #ffffff99;
-    padding: 12px;
+    padding: 20px;
     width: 100%;
     justify-content: flex-end !important;
   }
@@ -340,13 +251,15 @@ blockquote p::after {
   .details p {
     color: #040404;
     font-size: 12px;
-    line-height: 18px;
+    font-weight: 525;
+    line-height: 15px;
     margin: 0;
     padding-top: 9px;
     word-break: break-word;
-    min-width: calc(100% / 3);
-    max-width: calc(100% - 200px);
-    width: 100%;
+    min-width: 50%;
+    max-width: 60%;
+    width: auto;
+    overflow: hidden;
   }
 
   .close {

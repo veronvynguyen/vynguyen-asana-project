@@ -1,0 +1,52 @@
+# Guide to setting up Webpack 
+
+1. Install Webpack 
+npm install webpack webpack-cli --save-dev
+
+2. Install Babel
+npm install @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
+
+3. Create webpack.config.js in the root directory
+
+const path = require("path");
+
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    path: path.join(__dirname, "/dist"),
+    filename: "index_bundle.js"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      }
+    ]
+  }
+};
+
+4. Install css loader and style loader
+npm install css-loader style-loader --save-dev
+
+5. Create .babelrc in the root directory
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+
+6. Update package.json
+"start": "webpack --mode development --watch",
+"build": "webpack --mode production"
+
+6. Install webpack-dev-server
+npm install webpack-dev-server --save-dev
+
+7. Update package.json
+"start": "webpack-dev-server --mode development --open --hot"

@@ -7,7 +7,7 @@ export default function() {
     <div className="site-footer">
         <p>  
           <Picture src={paw} alt="Adopt a dog" className="footerImg" />
-           Built by a wonderful developer for <b><a href="https://www.asana.com">Asana.</a></b>
+           Built by a wonderful developer for <b><a href="http://www.asana.com">Asana</a></b>
         </p>
     </div>  
   )
